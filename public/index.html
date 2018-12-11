@@ -4,18 +4,20 @@
 <head>
   <title>Vimeo Cue Editor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-  <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' /> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   </link>
 </head>
 
 <body>
   <header>
-    <h1>Vimeo Cue Editor</h1>
+    <h1>vimeo cue editor</h1>
   </header>
   <div id="app">
-    <div id="video-player"></div>
+    <div id="video-player">
+      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo"></div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
     <aside>
       <div class="panel" id="options-panel">
         <div>
