@@ -15,31 +15,29 @@
   </header>
   <div id="app">
     <div id="video-player">
-      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo"></div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
+      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo" width=640></div>
     </div>
     <aside>
-      <div class="panel" id="options-panel">
+      <div class="panel" id="add-cue-panel">
         <div>
           <h2>Add Cues</h2>
-          <select id="cue-choices">
-            <option>Cue Type</option>
-          </select>
-          <button id="cues-add" class="options-btn">+</button>
-        </div>
-        <div>
-          <h2>Current Cues</h2>
-          <select id="restaurants-choices">
-            <option>A Restaurant</option>
-          </select>
-          <button id="restaurants-add" class="options-btn">+</button>
+          <form id='cue-form'>
+            <label>Text</label>
+            <input id='cue-text' />
+            <br>
+            <label>At Time, in seconds:</label>
+            <input id='cue-time-stamp' />
+            <br>
+            <button id="cues-add" class="options-btn" type='submit'>Submit</button>
+          </form>
         </div>
 
+
       </div>
-      <div class="panel" id="itinerary">
+      <div class="panel" id="cues-list-panel">
         <div>
           <h2>My Cues</h2>
-          <ul class="list-group" id="hotels-list">
+          <ul class="list-group" id="cues-list">
 
           </ul>
         </div>
