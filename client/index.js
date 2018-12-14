@@ -42,30 +42,6 @@ playertwo.on('timeupdate', async function () {
 //activeCues gets populated by form with cue objects
 let activeCues = []
 
-
-
-
-
-
-//foreach element in activecues, if time on player === element.time, then display element.data.text
-
-
-// Cuepoint
-// if (data && 'time' in data && 'data' in data) {
-//   return apiLog(eventName + ' event (' + data.time + ')', getFormattedMessage(data.data), {
-//       className: 'event',
-//       preFormatted: true
-//   });
-// }
-//listenfor time update
-// player.on('timeupdate', function(data) {
-//   currentTimeRange.val(data.seconds);
-// });
-
-
-
-//we should be adding cue overlays to the video player here
-
 //adds event listener to cue submit Form
 document.getElementById('cue-form').addEventListener('submit', event => {
   event.preventDefault();
@@ -132,15 +108,6 @@ const makeCue = (cueText, cueTime) => {
 }
 console.log('after push', activeCues)
 
-
-
-// An interface for the user to add Cues at certain timestamps.
-//     - Should also list the Cues that have been added and allow them to be deleted.
-// - While playing the video surface the Cues at the correct times and hide after a duration.
-// - A Cue only needs to contain a string.
-// - The messages should be displayed as an overlay on the player itself.
-// - Only use vanilla javascript and please write all your own CSS.
-// Avoid using cue point related player API methods (`addCuePoint`, `removeCuePoint`, `getCuePoints`).
 
 
 //you could do an ajax call into the vimeo api - maybe api by video id??

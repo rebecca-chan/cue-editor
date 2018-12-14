@@ -39,10 +39,31 @@ header {
 }
 
 #video-player {
+  position: relative;
   flex: 1;
   margin-top: 3rem;
   width: 50vw;
 }
+
+#cue-overlay {
+    position:absolute;
+    top:1rem;
+    left:1rem;
+    background:#000;
+    opacity:0.8;
+    z-index:50;
+    color:#fff;
+}
+
+#cue-overlay-text {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#cue-overlay-text:empty {
+ margin: 0
+}
+
 
 #current {
   color: white
