@@ -18,8 +18,18 @@
       <div id="cue-overlay">
         <p id="cue-overlay-text"></p>
       </div>
-      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo" width=640></div>
+      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo"></div>
       <div id="current">Current Time In Seconds: 0</div>
+
+      <div>
+        <h2>Want another video?</h2>
+        <span>https://vimeo.com/
+
+          <input type='number' id='video-url-changer' placeholder="#ID"></span>
+        <button id='search'>Search</button>
+      </div>
+
+
     </div>
     <aside>
       <div class="panel" id="add-cue-panel">
@@ -28,12 +38,11 @@
           <label>Cue Text:</label>
           <form id='cue-form'>
             <textarea id="cue-text" placeholder="Helpful Message Here"></textarea>
-            <label>Cue Time:</label>
-            <input type="number" id='cue-time-stamp' placeholder="Enter Time in Seconds Here" />
+            <label>Cue Time, in Seconds:</label>
+            <input type="number" id='cue-time-stamp' placeholder="#Seconds" />
             <br>
-            <button id="cues-add" class="submit-btn" type='submit'>Submit</button>
+            <button id="cues-add" class="submit-btn" type='submit'>Add Cue</button>
           </form>
-          <div id='error'></div>
         </div>
 
 
@@ -42,7 +51,6 @@
         <div>
           <h2>My Cues</h2>
           <div class="list-group" id="cues-list">
-
             </ul>
           </div>
           <div>

@@ -24,8 +24,6 @@ h2 {
 }
 
 header {
-  display: flex;
-  align-items: center;
   height: 3rem;
   padding: 0 0.5rem;
   color: white;
@@ -139,6 +137,7 @@ aside {
 }
 
 .cue-list-item {
+  position: relative;
   margin-bottom: 15px;
   border: 1px solid lightgray;
   background-color: rgb(210, 218, 228);
@@ -148,12 +147,14 @@ aside {
 }
 
 .cue-list-item .text {
-  margin: 5px;
+  position: absolute;
+  margin: .2rem 0 0 .2rem;
 }
 
-.cue-list.item .time {
-  margin: 1px;
-  text-align: bottom;
+.time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .remove-btn {
@@ -161,13 +162,13 @@ aside {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 1em;
   background: #5f9bc0;
   border: 0;
   color: #fff;
-  align-self: right;
+  right: 0;
+  padding: 0;
 }
-
 .remove-btn:hover {
   background: #8ea6b4;
 }

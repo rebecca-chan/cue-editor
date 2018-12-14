@@ -2,7 +2,6 @@ import Player from '@vimeo/player';
 
 const playertwo = new Player('playertwo', {
   url: "https://vimeo.com/76979871",
-  width: 640
 })
 
 playertwo.on('timeupdate', async function () {
@@ -11,9 +10,8 @@ playertwo.on('timeupdate', async function () {
   document.getElementById('current').innerHTML = `Current Time In Seconds: ${formattedTime}`
 
   function displayCues(activeCuesList) {
-    // console.log('cuepoints activeCuesList', list)
     activeCuesList.forEach(function (cue) {
-      if (Number(cue.time) === Math.round(currentTime)) {
+      if (Number(cue.time) === ~~(currentTime)) {
         document.getElementById('cue-overlay-text').innerHTML = cue.data.text
       }
       if (currentTime - cue.time > 5) {
@@ -31,9 +29,7 @@ let activeCues = []
 document.getElementById('cue-form').addEventListener('submit', event => {
   event.preventDefault();
   let cueText = document.getElementById('cue-text').value
-  console.log('cueText', cueText)
   let cueTime = document.getElementById('cue-time-stamp').value
-  console.log('cueTime', cueTime)
   makeCue(cueText, cueTime)
 
 
@@ -49,7 +45,7 @@ const makeCue = (cueText, cueTime) => {
   //create removeButton
   const removeButton = document.createElement('button')
   removeButton.className = 'remove-btn'
-  removeButton.innerHTML = 'x'
+  removeButton.innerHTML = '✕'
 
   //create cue list item with id
   cueCounter++;
@@ -64,23 +60,24 @@ const makeCue = (cueText, cueTime) => {
   //adds time-stamp inside cue list item
   const newCueTime = document.createElement('span')
   newCueTime.className = 'time'
-  newCueTime.innerHTML = `:${cueTime}secs `
-  // function formatTime(time) {
-  //   var hrs = ~~(time / 3600);
-  //   var mins = ~~((time % 3600) / 60);
-  //   var secs = ~~time % 60;
-  //   var ret = "";
-  //   if (hrs > 0) {
-  //     ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
-  //   }
-  //   ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-  //   ret += "" + secs;
-  //   return ret;
-  // }
-  // const formattedTime = formatTime(currentTime)
+  newCueTime.innerHTML = `${formatTime(cueTime)} `
 
-  //appends text, time-stamp, and removeButton in list item
-  cueListItem.append(newCueTime, newCueText, removeButton)
+  //formats time appearance into hh:mm:ss in cues list
+  function formatTime(time) {
+    const hrs = ~~(time / 3600);
+    const mins = ~~((time % 3600) / 60);
+    const secs = ~~time % 60;
+    let ret = "";
+    if (hrs > 0) {
+      ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
+  }
+
+  // appends text, time-stamp, and removeButton in list item
+  cueListItem.append(newCueText, newCueTime, removeButton)
   document.getElementById('cues-list').append(cueListItem)
 
   //creates cue object for Player to read
@@ -95,17 +92,13 @@ const makeCue = (cueText, cueTime) => {
   //adds cue object to activeCues array
   activeCues.push(newCue)
 
-  //add removeButton Listener
+  //add removeButton Listener, removes event listener, and then removes it from the DOM and our activeCues array
   removeButton.addEventListener('click', function remove() {
-    //remove event listener
     removeButton.removeEventListener('click', remove)
-    //remove cue from list
     activeCues = activeCues.filter(selected => selected.id !== cueListItem.id)
-    //remove cue from the DOM
     cueListItem.remove();
   })
 }
-console.log('after push', activeCues)
 
 
 
