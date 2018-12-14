@@ -18,15 +18,13 @@
       <div id="cue-overlay">
         <p id="cue-overlay-text"></p>
       </div>
-      <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo"></div>
+      <div data-vimeo-url="https://vimeo.com/76979871" id="player"></div>
       <div id="current">Current Time In Seconds: 0</div>
 
-      <div>
+      <div id='change-video-panel'>
         <h2>Want another video?</h2>
         <span>https://vimeo.com/
-
-          <input type='number' id='video-url-changer' placeholder="#ID"></span>
-        <button id='search'>Search</button>
+          <input type='number' id='video-url-changer' placeholder="#ID"> <button id='search'>Search</button></span>
       </div>
 
 
@@ -34,7 +32,7 @@
     <aside>
       <div class="panel" id="add-cue-panel">
         <div>
-          <h2>Add Cues</h2>
+          <h3>Add Cues</h3>
           <label>Cue Text:</label>
           <form id='cue-form'>
             <textarea id="cue-text" placeholder="Helpful Message Here"></textarea>
@@ -49,12 +47,11 @@
       </div>
       <div class="panel" id="cues-list-panel">
         <div>
-          <h2>My Cues</h2>
+          <h3>My Cues</h3>
           <div class="list-group" id="cues-list">
             </ul>
           </div>
           <div>
-
     </aside>
   </div>
   <script src="./bundle.js"></script>

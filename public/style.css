@@ -20,6 +20,13 @@ h2 {
   margin: 0 0 1rem 0;
   font-family: 'Montserrat';
   font-weight: normal;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 0 0 1rem 0;
+  font-family: 'Montserrat';
+  font-weight: normal;
   font-size: 1.2rem;
 }
 
@@ -173,6 +180,22 @@ aside {
   background: #8ea6b4;
 }
 
+#change-video-panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  color: white;
+  font-size: 1rem;
+}
+
+#search:hover {
+  background: #8ea6b4;
+}
+
+#search {
+  background: #5f9bc0;
+  color: white
+}
 
 
 
