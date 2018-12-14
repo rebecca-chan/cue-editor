@@ -27,24 +27,23 @@ playertwo.on('timeupdate', async function () {
   // const formattedTime = formatTime(currentTime)
   const formattedTime = Math.round(currentTime)
   document.getElementById('current').innerHTML = `Current Time In Seconds: ${formattedTime}`
+
+  function displayCues(list) {
+    // console.log('cuepoints activeCuesList', list)
+    list.forEach(function (cue) {
+      if (Number(cue.time) === Math.round(currentTime)) {
+        document.getElementById('cue-overlay-text').innerHTML = cue.data.text
+      }
+    })
+  }
+  displayCues(activeCues)
 })
 
 //activeCues gets populated by form with cue objects
 let activeCues = []
 
-function displayCues(list) {
-  console.log('cuepoints activeCuesList', list)
-  list.forEach((cue) => {
-    console.log('each cue', cue)
-    console.log('currentTime', currentTime)
-    console.log('formatted time', formattedTime)
-    if (cue.time === currentTime) {
-      console.log(cue.data.text)
-    }
-  })
-}
 
-displayCues(activeCues)
+
 
 
 
