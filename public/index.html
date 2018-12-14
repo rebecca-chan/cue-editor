@@ -15,7 +15,11 @@
   </header>
   <div id="app">
     <div id="video-player">
+      <div id="cue-overlay">
+        <p id="cue-overlay-text"></p>
+      </div>
       <div data-vimeo-url="https://vimeo.com/76979871" id="playertwo" width=640></div>
+      <div id="current">Current Time In Seconds: 0</div>
     </div>
     <aside>
       <div class="panel" id="add-cue-panel">
@@ -23,13 +27,13 @@
           <h2>Add Cues</h2>
           <form id='cue-form'>
             <label>Text</label>
-            <input id='cue-text' />
-            <br>
-            <label>At Time, in seconds:</label>
+            <textarea id="cue-text" placeholder="Write Message Here"></textarea>
+            <label>Time In Seconds:</label>
             <input id='cue-time-stamp' />
             <br>
             <button id="cues-add" class="options-btn" type='submit'>Submit</button>
           </form>
+          <div id='error'></div>
         </div>
 
 
