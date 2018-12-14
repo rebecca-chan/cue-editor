@@ -1,38 +1,23 @@
 import Player from '@vimeo/player';
-console.log('hello from webpack')
 
 const playertwo = new Player('playertwo', {
   url: "https://vimeo.com/76979871",
   width: 640
 })
 
-playertwo.on('play', function () {
-  console.log('player two played')
-})
-
 playertwo.on('timeupdate', async function () {
   const currentTime = await this.getCurrentTime();
-  // function formatTime(time) {
-  //   var hrs = ~~(time / 3600);
-  //   var mins = ~~((time % 3600) / 60);
-  //   var secs = ~~time % 60;
-  //   var ret = "";
-  //   if (hrs > 0) {
-  //     ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
-  //   }
-  //   ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-  //   ret += "" + secs;
-  //   return ret;
-  // }
-  // const formattedTime = formatTime(currentTime)
   const formattedTime = Math.round(currentTime)
   document.getElementById('current').innerHTML = `Current Time In Seconds: ${formattedTime}`
 
-  function displayCues(list) {
+  function displayCues(activeCuesList) {
     // console.log('cuepoints activeCuesList', list)
-    list.forEach(function (cue) {
+    activeCuesList.forEach(function (cue) {
       if (Number(cue.time) === Math.round(currentTime)) {
         document.getElementById('cue-overlay-text').innerHTML = cue.data.text
+      }
+      if (currentTime - cue.time > 5) {
+        document.getElementById('cue-overlay-text').innerHTML = ''
       }
     })
   }
@@ -68,16 +53,31 @@ const makeCue = (cueText, cueTime) => {
 
   //create cue list item with id
   cueCounter++;
-  const cueListItem = document.createElement('li')
+  const cueListItem = document.createElement('div')
   cueListItem.className = 'cue-list-item'
   cueListItem.id = cueCounter
 
   //create text inside cue list item
   const newCueText = document.createElement('span')
   newCueText.innerHTML = cueText
+  newCueText.className = 'text'
   //adds time-stamp inside cue list item
   const newCueTime = document.createElement('span')
+  newCueTime.className = 'time'
   newCueTime.innerHTML = `:${cueTime}secs `
+  // function formatTime(time) {
+  //   var hrs = ~~(time / 3600);
+  //   var mins = ~~((time % 3600) / 60);
+  //   var secs = ~~time % 60;
+  //   var ret = "";
+  //   if (hrs > 0) {
+  //     ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+  //   }
+  //   ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+  //   ret += "" + secs;
+  //   return ret;
+  // }
+  // const formattedTime = formatTime(currentTime)
 
   //appends text, time-stamp, and removeButton in list item
   cueListItem.append(newCueTime, newCueText, removeButton)
@@ -104,7 +104,6 @@ const makeCue = (cueText, cueTime) => {
     //remove cue from the DOM
     cueListItem.remove();
   })
-
 }
 console.log('after push', activeCues)
 
