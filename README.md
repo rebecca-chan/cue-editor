@@ -1,11 +1,6 @@
 # Rebecca Chan's Vimeo Coding Challenge
 
 
-
-* `npm install`
-* `npm run build`
-
-
 This Vimeo Cue Editor is created as a Single Page Application using only vanilla JS
 
 Allows user to add cues at specific times - by seconds
