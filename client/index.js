@@ -5,31 +5,33 @@ const player = new Player('player', {
   url: "https://vimeo.com/76979871",
 })
 
-//Adds timeupdate listener
+//Active Cues array to store all our cue instances
+let activeCues = []
+
+//Create event listener
 player.on('timeupdate', async function () {
 
   //Display current time in seconds
   const currentTime = await this.getCurrentTime();
-  const formattedTime = ~~(currentTime)
-  document.getElementById('current').innerHTML = `Current Time In Seconds: ${formattedTime}`
+  const seconds = ~~(currentTime)
+  document.getElementById('current').innerHTML = `Current Time In Seconds: ${seconds}`
 
-  //Displays cue overlay if a cue time matches player current time
+  //Displays cue overlay if a cue time in activeCues array matches player's current time
   function displayCues(activeCuesList) {
+    const overlayText = document.getElementById('cue-overlay-text')
     activeCuesList.forEach(function (cue) {
       if (Number(cue.time) === ~~(currentTime)) {
-        document.getElementById('cue-overlay-text').innerHTML = cue.data.text
+        overlayText.innerHTML = cue.data.text
       }
-      //Cue disappears after 5 seconds
+      //Cue disappears
       if (currentTime - cue.time > 5) {
-        document.getElementById('cue-overlay-text').innerHTML = ''
+        overlayText.innerHTML = ''
       }
     })
   }
   displayCues(activeCues)
 })
 
-//Active Cues array to store all our cue instances
-let activeCues = []
 
 //Add event listener and makeCue function to Add Cue button
 document.getElementById('cue-form').addEventListener('submit', event => {
@@ -49,7 +51,7 @@ document.getElementById('cue-form').addEventListener('submit', event => {
 //Let's make a cue!
 let cueCounter = 0
 const makeCue = (cueText, cueTime) => {
-  //First create a remove button for that recently made cue
+  //First create a remove button for recently made cue
   const removeButton = document.createElement('button')
   removeButton.className = 'remove-btn'
   removeButton.innerHTML = '✕'
@@ -100,7 +102,7 @@ const makeCue = (cueText, cueTime) => {
   //Add remove button listener for click, once clicked - removes event listener, and then removes it from the DOM and our activeCues array
   removeButton.addEventListener('click', function remove() {
     removeButton.removeEventListener('click', remove)
-    activeCues = activeCues.filter(selected => selected.id !== cueListItem.id)
+    activeCues = [...activeCues].filter(selected => selected.id !== cueListItem.id)
     cueListItem.remove();
   })
 }

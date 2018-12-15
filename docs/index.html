@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  </link>
 </head>
 
 <body>
@@ -35,9 +34,9 @@
           <h3>Add Cues</h3>
           <label>Cue Text:</label>
           <form id='cue-form'>
-            <textarea id="cue-text" placeholder="Helpful Message Here"></textarea>
+            <textarea id="cue-text" placeholder="Helpful Message Here" required></textarea>
             <label>Cue Time, in Seconds:</label>
-            <input type="number" id='cue-time-stamp' placeholder="#Seconds" />
+            <input required type="number" id='cue-time-stamp' placeholder="#Seconds" />
             <br>
             <button id="cues-add" class="submit-btn" type='submit'>Add Cue</button>
           </form>
