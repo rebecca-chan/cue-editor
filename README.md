@@ -1,11 +1,6 @@
 # Rebecca Chan's Vimeo Coding Challenge
 
 
-<<<<<<< HEAD
-Please look in the public folder for index.html! Thanks!
-
-=======
->>>>>>> e6fc1e02d5bfe1862e16b8bc9fdb5b8c7f7ebf32
 This Vimeo Cue Editor is created as a Single Page Application using only vanilla JS
 
 Allows user to add cues at specific times - by seconds
