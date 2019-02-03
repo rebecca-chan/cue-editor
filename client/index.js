@@ -1,7 +1,7 @@
 import Player from '@vimeo/player';
 
 //Create instance of Vimeo Player
-const player = new Player('player', {
+const player = new Vimeo.Player('player', {
   url: "https://vimeo.com/76979871",
 })
 
