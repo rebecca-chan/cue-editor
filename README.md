@@ -1,8 +1,7 @@
-Rebecca Chan’s Vimeo Coding Challenge
 
 https://rebecca-chan.github.io/video-cue-editor/
 
-This Vimeo Cue Editor is created as a Single Page Application using only vanilla JS
+This Video Cue Editor is created as a Single Page Application using only vanilla JS
 
 Allows user to add cues at specific times - by seconds
 
